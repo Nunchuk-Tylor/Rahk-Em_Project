@@ -1,0 +1,17 @@
+.root {
+    -fx-background-image: url("/images/mrbell.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
+.label {
+    -fx-text-fill: black;
+    -fx-background-color: #FFC5D3;
+    -fx-border-color: white;
+}
+
+.button {
+    -fx-background-color: #FFC5D3;
+    -fx-text-fill: black;
+}

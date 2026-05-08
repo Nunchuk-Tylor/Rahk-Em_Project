@@ -1,150 +1,355 @@
 package com.elliottandcoachgeorge.javafxtest;
 
-import java.util.*;
+import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
-public class Game {
+import java.util.Random;
 
-    private static final String GREEN = "\u001b[42;1m";
-    private static final String YELLOW = "\u001b[43;1m";
-    private static final String GRAY = "\u001b[47;1m";
-    private static final String RESET = "\u001b[0m";
+public class PuckleController {
 
-    // =========================
-    // WORD LIST (from your file)
-    // =========================
-    private static final String[] WORDS = {
-            "aback","abase","abate","abbey","abbot","abhor","abide","abled","abode","abort",
-            "about","above","abuse","abyss","acorn","acrid","actor","acute","adage","adapt",
-            "adept","admin","admit","adobe","adopt","adore","adorn","adult","affix","afire",
-            "afoot","afoul","after","again","agape","agate","agent","agile","aging","aglow",
-            "agony","agora","agree","ahead","aider","aisle","alarm","album","alert","algae",
-            "alibi","alien","align","alike","alive","allay","alley","allot","allow","alloy",
-            "aloft","alone","along","aloof","aloud","alpha","altar","alter","amass","amaze",
-            "amber","amble","amend","amiss","amity","among","ample","amply","amuse","angel",
-            "anger","angle","angry","angst","anime","ankle","annex","annoy","annul","anode",
-            "antic","anvil","aorta","apart","aphid","aping","apnea","apple","apply","apron",
-            "aptly","arbor","ardor","arena","argue","arise","armor","aroma","arose","array",
-            "arrow","arson","artsy","ascot","ashen","aside","askew","assay","asset","atoll",
-            "atone","attic","audio","audit","augur","aunty","avail","avert","avian","avoid",
-            "await","awake","award","aware","awash","awful","awoke","axial","axiom","axion",
-            "azure","bacon","badge","badly","bagel","baggy","baker","baler","balmy","banal",
-            "banjo","barge","baron","basal","basic","basil","basin","basis","baste","batch",
-            "bathe","baton","batty","bawdy","bayou","beach","beady","beard","beast","beech",
-            "beefy","befit","began","begat","beget","begin","begun","being","belch","belie",
-            "belle","belly","below","bench","beret","berry","berth","beset","betel","bevel",
-            "bezel","bible","bicep","biddy","bigot","bilge","billy","binge","bingo","biome",
-            "birch","birth","bison","bitty","black","blade","blame","bland","blank","blare",
-            "blast","blaze","bleak","bleat","bleed","bleep","blend","bless","blimp","blind",
-            "blink","bliss","blitz","bloat","block","bloke","blond","blood","bloom","blown",
-            "bluff","blunt","blurb","blurt","blush","board","boast","bobby","boney","bongo",
-            "bonus","booby","boost","booth","booty","booze","boozy","borax","borne","bosom",
-            "bossy","botch","bough","boule","bound","bowel","boxer","brace","braid","brain",
-            "brake","brand","brash","brass","brave","bravo","brawl","brawn","bread","break",
-            "breed","briar","bribe","brick","bride","brief","brine","bring","brink","briny",
-            "brisk","broad","broil","broke","brood","brook","broom","broth","brown","brunt",
-            "brush","brute","buddy","budge","buggy","bugle","build","built","bulge","bulky",
-            "bully","bunch","bunny","burly","burnt","burst","bused","bushy","butch","butte",
-            "buxom","buyer","bylaw","cabal","cabby","cabin","cable","cacao","cache","cacti",
-            "caddy","cadet","cagey","cairn","camel","cameo","canal","candy","canny","canoe",
-            "canon","caper","caput","carat","cargo","carol","carry","carve","caste","catch",
-            "cater","catty","caulk","cause","cavil","cease","cedar","cello","chafe","chaff",
-            "chain","chair","chalk","champ","chant","chaos","chard","charm","chart","chase",
-            "chasm","cheap","cheat","check","cheek","cheer","chess","chest","chick","chide",
-            "chief","child","chili","chill","chime","china","chirp","chock","choir","choke",
-            "chord","chore","chose","chuck","chump","chunk","churn","chute","cider","cigar",
-            "cinch","circa","civic","civil","clean","clear","clerk","click","cliff","climb",
-            "clock","close","cloud","crown","crush","crust","cubic","cycle","daily","dance",
-            "death","delay","delta","demon","devil","diary","dirty","doubt","drama","dream",
-            "drink","drive","eager","early","earth","eagle","edict","eight","elect","empty",
-            "enemy","enjoy","entry","equal","error","event","every","exact","exist","extra",
-            "faith","fancy","fault","feast","fence","field","fight","final","flame","flash",
-            "float","floor","force","frame","fresh","front","fruit","giant","ghost","globe",
-            "grace","grade","grain","grand","grant","grass","grave","great","green","group",
-            "guard","guess","guide","habit","happy","heart","heavy","honor","human","image",
-            "index","input","judge","knife","learn","light","logic","lucky","magic","march",
-            "match","model","money","month","music","nasty","nerve","never","night","noble",
-            "noise","north","novel","ocean","offer","often","olive","opera","order","other",
-            "paint","panel","party","peace","phone","photo","piece","pilot","place","plane",
-            "plant","plate","point","power","pride","print","prize","proof","queen","quick",
-            "quiet","radio","raise","reach","react","ready","reply","right","river","robin",
-            "rough","round","route","royal","rural","sauce","scale","scene","scope","score",
-            "sense","shape","share","sharp","sheep","sheet","shell","shift","shine","shirt",
-            "shock","shoot","shore","short","sight","skill","sleep","smile","sound","space",
-            "spare","speak","spend","spine","sport","stage","stand","start","state","stick",
-            "stone","store","story","stuck","study","style","sugar","super","sweet","table",
-            "taste","teach","theme","thing","think","third","thorn","throw","tight","title",
-            "today","tooth","touch","tower","track","trade","train","trend","trial","tribe",
-            "truck","trust","truth","uncle","under","union","unity","urban","usage","usual",
-            "value","video","virus","visit","vital","vocal","voice","watch","water","wheel",
-            "where","which","while","white","whole","woman","world","worry","wound","write",
-            "wrong","youth","zebra","zesty","zonal"
-    };
+    // ---------------- GRID LABELS ----------------
+    @FXML private Label r0c0; @FXML private Label r0c1; @FXML private Label r0c2; @FXML private Label r0c3; @FXML private Label r0c4;
+    @FXML private Label r1c0; @FXML private Label r1c1; @FXML private Label r1c2; @FXML private Label r1c3; @FXML private Label r1c4;
+    @FXML private Label r2c0; @FXML private Label r2c1; @FXML private Label r2c2; @FXML private Label r2c3; @FXML private Label r2c4;
+    @FXML private Label r3c0; @FXML private Label r3c1; @FXML private Label r3c2; @FXML private Label r3c3; @FXML private Label r3c4;
+    @FXML private Label r4c0; @FXML private Label r4c1; @FXML private Label r4c2; @FXML private Label r4c3; @FXML private Label r4c4;
+    @FXML private Label r5c0; @FXML private Label r5c1; @FXML private Label r5c2; @FXML private Label r5c3; @FXML private Label r5c4;
 
-    private String target;
+    // ---------------- BUTTONS ----------------
+    @FXML private Button submitButton;
+    @FXML private Button clearButton;
+    @FXML private Button restartButton;
+    @FXML private Button exitButton;
 
-    public Game() {
-        target = WORDS[(int)(Math.random() * WORDS.length)];
+    // ---------------- UI ----------------
+    @FXML private ImageView logoImage;
+    @FXML private ComboBox<String> themeDropdown;
+    @FXML private BorderPane rootPane;
+
+    // ---------------- GAME STATE ----------------
+    private Label[][] board;
+    private int currentRow = 0;
+    private int currentCol = 0;
+
+    private final String[] WORDS = {"LUCAS"};
+    private String targetWord;
+
+    private boolean hasSubmitted = false;
+
+    // ---------------- INIT ----------------
+    @FXML
+    public void initialize() {
+
+        board = new Label[][]{
+                {r0c0, r0c1, r0c2, r0c3, r0c4},
+                {r1c0, r1c1, r1c2, r1c3, r1c4},
+                {r2c0, r2c1, r2c2, r2c3, r2c4},
+                {r3c0, r3c1, r3c2, r3c3, r3c4},
+                {r4c0, r4c1, r4c2, r4c3, r4c4},
+                {r5c0, r5c1, r5c2, r5c3, r5c4}
+        };
+
+        targetWord = WORDS[new Random().nextInt(WORDS.length)];
+
+        submitButton.setOnAction(e -> submitGuess());
+        clearButton.setOnAction(e -> clearRow());
+        restartButton.setOnAction(e -> restartGame());
+        exitButton.setOnAction(e -> System.exit(0));
+
+        themeDropdown.setOnAction(e -> applyTheme(themeDropdown.getValue()));
+
+        rootPane.addEventFilter(KeyEvent.KEY_TYPED, this::handleKeyTyped);
+
+        rootPane.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                submitGuess();
+            }
+        });
+
+        rootPane.setFocusTraversable(true);
+        rootPane.requestFocus();
+
+        themeDropdown.setValue("Light");
+        applyTheme("Light");
     }
 
-    public void play() {
-        Scanner scanner = new Scanner(System.in);
+    // ---------------- INPUT ----------------
+    private void handleKeyTyped(KeyEvent event) {
 
-        System.out.println("Enter a 5-letter word:");
+        String character = event.getCharacter().toUpperCase();
 
-        for (int attempt = 1; attempt <= 6; attempt++) {
+        if (!character.matches("[A-Z]")) {
+            event.consume();
+            return;
+        }
 
-            String input = scanner.nextLine().toLowerCase().trim();
+        addLetter(character);
+    }
 
-            if (input.length() != 5) {
-                System.out.println("Must be exactly 5 letters.");
-                attempt--;
-                continue;
-            }
+    private void addLetter(String letter) {
+        if (currentCol < 5) {
+            board[currentRow][currentCol].setText(letter);
+            currentCol++;
+        }
+    }
 
-            char[] t = target.toCharArray();
-            char[] g = input.toCharArray();
+    private void clearRow() {
+        for (int i = 0; i < 5; i++) {
+            board[currentRow][i].setText("");
+        }
+        currentCol = 0;
+    }
 
-            String[] out = new String[5];
-            boolean[] used = new boolean[5];
+    // ---------------- GAME LOGIC ----------------
+    private void submitGuess() {
 
-            // greens
-            for (int i = 0; i < 5; i++) {
-                if (g[i] == t[i]) {
-                    out[i] = GREEN + g[i];
-                    used[i] = true;
-                }
-            }
+        if (currentCol < 5) return;
 
-            // yellows + grays
-            for (int i = 0; i < 5; i++) {
-                if (out[i] != null) continue;
+        hasSubmitted = true;
 
-                boolean found = false;
+        StringBuilder guessBuilder = new StringBuilder();
 
-                for (int j = 0; j < 5; j++) {
-                    if (!used[j] && g[i] == t[j]) {
-                        used[j] = true;
-                        found = true;
-                        break;
-                    }
-                }
+        for (int i = 0; i < 5; i++) {
+            guessBuilder.append(board[currentRow][i].getText());
+        }
 
-                out[i] = (found ? YELLOW : GRAY) + g[i];
-            }
+        String guess = guessBuilder.toString();
 
-            for (String s : out) System.out.print(s);
-            System.out.println(RESET);
+        for (int i = 0; i < 5; i++) {
 
-            if (input.equals(target)) {
-                System.out.println("You won in " + attempt + " guesses!");
-                return;
+            Label tile = board[currentRow][i];
+            String letter = guess.substring(i, i + 1);
+
+            if (targetWord.substring(i, i + 1).equals(letter)) {
+
+                tile.setStyle("-fx-background-color:#6aaa64;-fx-text-fill:white;-fx-border-color:black;-fx-border-width:2;-fx-font-size:28;-fx-font-weight:bold;");
+
+            } else if (targetWord.contains(letter)) {
+
+                tile.setStyle("-fx-background-color:#c9b458;-fx-text-fill:white;-fx-border-color:black;-fx-border-width:2;-fx-font-size:28;-fx-font-weight:bold;");
+
+            } else {
+
+                tile.setStyle("-fx-background-color:#787c7e;-fx-text-fill:white;-fx-border-color:black;-fx-border-width:2;-fx-font-size:28;-fx-font-weight:bold;");
             }
         }
 
-        System.out.println("You lost! Word was: " + target);
+        if (guess.equals(targetWord)) {
+            showWinWindow();
+            return;
+        }
+
+        currentRow++;
+        currentCol = 0;
+
+        if (currentRow >= 6) {
+            showLoseWindow();
+        }
     }
 
-    public static void main(String[] args) {
-        new Game().play();
+    // ---------------- FIXED RESTART (NO WHITE RESET BUG) ----------------
+    private void restartGame() {
+
+        currentRow = 0;
+        currentCol = 0;
+        hasSubmitted = false;
+
+        targetWord = WORDS[new Random().nextInt(WORDS.length)];
+
+        for (int r = 0; r < 6; r++) {
+            for (int c = 0; c < 5; c++) {
+
+                Label tile = board[r][c];
+
+                tile.setText("");
+
+                tile.setStyle(
+                        "-fx-border-color:black;" +
+                                "-fx-border-width:2;" +
+                                "-fx-font-size:28;" +
+                                "-fx-font-weight:bold;" +
+                                "-fx-text-fill:" + (themeDropdown.getValue().equals("Light") ? "black" : "white") + ";"
+                );
+            }
+        }
+
+        rootPane.requestFocus();
     }
+
+    // ---------------- THEME ----------------
+    private void applyTheme(String theme) {
+
+        Scene scene = rootPane.getScene();
+        if (scene == null) return;
+
+        scene.getStylesheets().clear();
+
+        switch (theme) {
+
+            case "Fuschia":
+                scene.getStylesheets().add(getClass().getResource("/styles/fuschia.css").toExternalForm());
+                break;
+
+            case "Willow":
+                scene.getStylesheets().add(getClass().getResource("/styles/willow.css").toExternalForm());
+                break;
+
+            case "Coach":
+                scene.getStylesheets().add(getClass().getResource("/styles/coach.css").toExternalForm());
+                break;
+
+            case "Ocean":
+                scene.getStylesheets().add(getClass().getResource("/styles/Ocean.css").toExternalForm());
+                break;
+
+            case "Raven":
+                scene.getStylesheets().add(getClass().getResource("/styles/Raven.css").toExternalForm());
+                break;
+
+            case "Bell":
+                scene.getStylesheets().add(getClass().getResource("/styles/Bell.css").toExternalForm());
+                break;
+
+            case "The Four":
+                scene.getStylesheets().add(getClass().getResource("/styles/Four.css").toExternalForm());
+                break;
+
+            case "Storm":
+                scene.getStylesheets().add(getClass().getResource("/styles/Storm.css").toExternalForm());
+                break;
+
+            case "Orange":
+                scene.getStylesheets().add(getClass().getResource("/styles/Orange.css").toExternalForm());
+                break;
+
+            case "Blue":
+                scene.getStylesheets().add(getClass().getResource("/styles/blue.css").toExternalForm());
+                break;
+
+            case "Dark":
+                scene.getStylesheets().add(getClass().getResource("/styles/dark.css").toExternalForm());
+                break;
+
+            case "Light":
+                scene.getStylesheets().add(getClass().getResource("/styles/light.css").toExternalForm());
+                break;
+        }
+
+        if (hasSubmitted) {
+            forceAllTextWhite();
+        }
+    }
+
+    // ---------------- FORCE TEXT WHITE AFTER SUBMIT ----------------
+    private void forceAllTextWhite() {
+
+        for (int r = 0; r < 6; r++) {
+            for (int c = 0; c < 5; c++) {
+
+                Label tile = board[r][c];
+
+                String style = tile.getStyle();
+                style = style.replaceAll("-fx-text-fill:[^;]+;", "");
+
+                tile.setStyle(style + "-fx-text-fill:white;");
+            }
+        }
+    }
+
+    // ---------------- WIN ----------------
+    private void showWinWindow() {
+
+        Stage winStage = new Stage();
+
+        Label winLabel = new Label("YOU WIN!");
+        winLabel.setStyle("-fx-font-family:'Bebas Neue';-fx-font-size:40;-fx-font-weight:bold;");
+
+        Button restartBtn = new Button("Restart");
+        Button exitBtn = new Button("Exit");
+
+        restartBtn.setOnAction(e -> {
+            restartGame();
+            winStage.close();
+        });
+
+        exitBtn.setOnAction(e -> System.exit(0));
+
+        VBox layout = new VBox(15, winLabel, restartBtn, exitBtn);
+        layout.setAlignment(Pos.CENTER);
+
+        Scene scene = new Scene(layout, 300, 200);
+        winStage.setScene(scene);
+        winStage.setTitle("Victory");
+        winStage.show();
+    }
+
+    // ---------------- LOSE ----------------
+    private void showLoseWindow() {
+
+        Stage loseStage = new Stage();
+
+        Label loseLabel = new Label("YOU LOSE!");
+        loseLabel.setStyle("-fx-font-family:'Bebas Neue';-fx-font-size:40;-fx-font-weight:bold;");
+
+        Button restartBtn = new Button("Restart");
+        Button exitBtn = new Button("Exit");
+
+        restartBtn.setOnAction(e -> {
+            restartGame();
+            loseStage.close();
+        });
+
+        exitBtn.setOnAction(e -> System.exit(0));
+
+        VBox layout = new VBox(15, loseLabel, restartBtn, exitBtn);
+        layout.setAlignment(Pos.CENTER);
+
+        Scene scene = new Scene(layout, 300, 200);
+        loseStage.setScene(scene);
+        loseStage.setTitle("Game Over");
+        loseStage.show();
+    }
+
+    // ---------------- KEYBOARD BUTTONS ----------------
+    @FXML private void handleQ() { addLetter("Q"); }
+    @FXML private void handleW() { addLetter("W"); }
+    @FXML private void handleE() { addLetter("E"); }
+    @FXML private void handleR() { addLetter("R"); }
+    @FXML private void handleT() { addLetter("T"); }
+    @FXML private void handleY() { addLetter("Y"); }
+    @FXML private void handleU() { addLetter("U"); }
+    @FXML private void handleI() { addLetter("I"); }
+    @FXML private void handleO() { addLetter("O"); }
+    @FXML private void handleP() { addLetter("P"); }
+
+    @FXML private void handleA() { addLetter("A"); }
+    @FXML private void handleS() { addLetter("S"); }
+    @FXML private void handleD() { addLetter("D"); }
+    @FXML private void handleF() { addLetter("F"); }
+    @FXML private void handleG() { addLetter("G"); }
+    @FXML private void handleH() { addLetter("H"); }
+    @FXML private void handleJ() { addLetter("J"); }
+    @FXML private void handleK() { addLetter("K"); }
+    @FXML private void handleL() { addLetter("L"); }
+
+    @FXML private void handleZ() { addLetter("Z"); }
+    @FXML private void handleX() { addLetter("X"); }
+    @FXML private void handleC() { addLetter("C"); }
+    @FXML private void handleV() { addLetter("V"); }
+    @FXML private void handleB() { addLetter("B"); }
+    @FXML private void handleN() { addLetter("N"); }
+    @FXML private void handleM() { addLetter("M"); }
 }

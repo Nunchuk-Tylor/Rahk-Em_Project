@@ -1,0 +1,16 @@
+.root {
+    -fx-background-image: url("/images/ocean.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
+.label {
+    -fx-text-fill: white;
+    -fx-background-color: #246A73;
+}
+
+.button {
+    -fx-background-color: #246A73;
+    -fx-text-fill: white;
+}

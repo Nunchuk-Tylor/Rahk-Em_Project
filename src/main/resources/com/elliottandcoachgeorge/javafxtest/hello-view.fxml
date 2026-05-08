@@ -1,16 +1,252 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.elliottandcoachgeorge.javafxtest.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<BorderPane fx:id="rootPane"
+            prefHeight="950"
+            prefWidth="900"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.elliottandcoachgeorge.javafxtest.PuckleController">
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+    <center>
+
+        <VBox alignment="TOP_CENTER"
+              spacing="20">
+
+            <padding>
+                <Insets top="40" left="20" right="20" bottom="20"/>
+            </padding>
+
+            <GridPane alignment="CENTER"
+                      hgap="8"
+                      vgap="8">
+
+                <!-- Row 0 -->
+                <Label fx:id="r0c0" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label fx:id="r0c1" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Label fx:id="r0c2" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                <Label fx:id="r0c3" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+                <Label fx:id="r0c4" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+
+                <!-- Row 1 -->
+                <Label fx:id="r1c0" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label fx:id="r1c1" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label fx:id="r1c2" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                <Label fx:id="r1c3" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                <Label fx:id="r1c4" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+
+                <!-- Row 2 -->
+                <Label fx:id="r2c0" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Label fx:id="r2c1" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Label fx:id="r2c2" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                <Label fx:id="r2c3" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+                <Label fx:id="r2c4" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="4" GridPane.rowIndex="2"/>
+
+                <!-- Row 3 -->
+                <Label fx:id="r3c0" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <Label fx:id="r3c1" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                <Label fx:id="r3c2" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                <Label fx:id="r3c3" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+                <Label fx:id="r3c4" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="4" GridPane.rowIndex="3"/>
+
+                <!-- Row 4 -->
+                <Label fx:id="r4c0" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <Label fx:id="r4c1" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                <Label fx:id="r4c2" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+                <Label fx:id="r4c3" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+                <Label fx:id="r4c4" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="4" GridPane.rowIndex="4"/>
+
+                <!-- Row 5 -->
+                <Label fx:id="r5c0" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                <Label fx:id="r5c1" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                <Label fx:id="r5c2" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+                <Label fx:id="r5c3" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+                <Label fx:id="r5c4" alignment="CENTER" prefHeight="70" prefWidth="70"
+                       style="-fx-border-color:black; -fx-border-width:2; -fx-font-size:28; -fx-font-weight:bold;"
+                       GridPane.columnIndex="4" GridPane.rowIndex="5"/>
+            </GridPane>
+
+        </VBox>
+
+    </center>
+
+    <right>
+
+        <VBox alignment="TOP_CENTER"
+              spacing="20">
+
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <ImageView fx:id="logoImage"
+                       fitWidth="180"
+                       preserveRatio="true">
+
+                <image>
+                    <Image url="@../../../Images/Logo.png"/>
+                </image>
+
+            </ImageView>
+
+            <!-- THEME DROPDOWN -->
+            <ComboBox fx:id="themeDropdown"
+                      prefWidth="150"
+                      promptText="Select Theme">
+
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Fuschia"/>
+                        <String fx:value="Dark"/>
+                        <String fx:value="Raven"/>
+                        <String fx:value="Blue"/>
+                        <String fx:value="Orange"/>
+                        <String fx:value="Coach"/>
+                        <String fx:value="The Four"/>
+                        <String fx:value="Bell"/>
+                        <String fx:value="Willow"/>
+                        <String fx:value="Storm"/>
+                        <String fx:value="Ocean"/>
+                        <String fx:value="Light"/>
+                    </FXCollections>
+                </items>
+
+            </ComboBox>
+
+            <Button fx:id="submitButton"
+                    prefHeight="65"
+                    prefWidth="150"
+                    text="SUBMIT"/>
+
+            <Button fx:id="clearButton"
+                    prefHeight="65"
+                    prefWidth="150"
+                    text="CLEAR"/>
+
+            <Button fx:id="restartButton"
+                    prefHeight="65"
+                    prefWidth="150"
+                    text="RESTART"/>
+
+            <Button fx:id="exitButton"
+                    prefHeight="65"
+                    prefWidth="150"
+                    text="EXIT"/>
+
+        </VBox>
+
+    </right>
+
+    <bottom>
+
+        <VBox alignment="CENTER"
+              spacing="15">
+
+            <padding>
+                <Insets bottom="25" left="20" right="20" top="20"/>
+            </padding>
+
+            <HBox alignment="CENTER" spacing="8">
+                <Button prefWidth="65" prefHeight="75" text="Q" onAction="#handleQ"/>
+                <Button prefWidth="65" prefHeight="75" text="W" onAction="#handleW"/>
+                <Button prefWidth="65" prefHeight="75" text="E" onAction="#handleE"/>
+                <Button prefWidth="65" prefHeight="75" text="R" onAction="#handleR"/>
+                <Button prefWidth="65" prefHeight="75" text="T" onAction="#handleT"/>
+                <Button prefWidth="65" prefHeight="75" text="Y" onAction="#handleY"/>
+                <Button prefWidth="65" prefHeight="75" text="U" onAction="#handleU"/>
+                <Button prefWidth="65" prefHeight="75" text="I" onAction="#handleI"/>
+                <Button prefWidth="65" prefHeight="75" text="O" onAction="#handleO"/>
+                <Button prefWidth="65" prefHeight="75" text="P" onAction="#handleP"/>
+            </HBox>
+
+            <HBox alignment="CENTER" spacing="8">
+                <Button prefWidth="65" prefHeight="75" text="A" onAction="#handleA"/>
+                <Button prefWidth="65" prefHeight="75" text="S" onAction="#handleS"/>
+                <Button prefWidth="65" prefHeight="75" text="D" onAction="#handleD"/>
+                <Button prefWidth="65" prefHeight="75" text="F" onAction="#handleF"/>
+                <Button prefWidth="65" prefHeight="75" text="G" onAction="#handleG"/>
+                <Button prefWidth="65" prefHeight="75" text="H" onAction="#handleH"/>
+                <Button prefWidth="65" prefHeight="75" text="J" onAction="#handleJ"/>
+                <Button prefWidth="65" prefHeight="75" text="K" onAction="#handleK"/>
+                <Button prefWidth="65" prefHeight="75" text="L" onAction="#handleL"/>
+            </HBox>
+
+            <HBox alignment="CENTER" spacing="8">
+                <Button prefWidth="65" prefHeight="75" text="Z" onAction="#handleZ"/>
+                <Button prefWidth="65" prefHeight="75" text="X" onAction="#handleX"/>
+                <Button prefWidth="65" prefHeight="75" text="C" onAction="#handleC"/>
+                <Button prefWidth="65" prefHeight="75" text="V" onAction="#handleV"/>
+                <Button prefWidth="65" prefHeight="75" text="B" onAction="#handleB"/>
+                <Button prefWidth="65" prefHeight="75" text="N" onAction="#handleN"/>
+                <Button prefWidth="65" prefHeight="75" text="M" onAction="#handleM"/>
+            </HBox>
+
+        </VBox>
+
+    </bottom>
+
+</BorderPane>
