@@ -1,0 +1,16 @@
+.root {
+    -fx-background-image: url("/images/JoinMe.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
+.label {
+    -fx-text-fill: #153204;
+    -fx-background-color: #001e60;
+}
+
+.button {
+    -fx-background-color: #153204;
+    -fx-text-fill: #001e60;
+}
