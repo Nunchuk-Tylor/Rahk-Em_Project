@@ -422,18 +422,13 @@ public class RahkEmStartScreen extends Application {
             case "Blue":     return "#1a2a4a";
             case "Ocean":    return "#003d56";
             case "Raven":    return "#1e1e30";
-            case "Coach":    return "#3b0000";
+            case "Coach":    return "#90D5FF";
             case "Willow":   return "#1e3318";
             case "Fuschia":  return "#3b0a3b";
-            case "Bell":     return "#4a3800";
-            case "The Four": return "#1e1a3a";
-            case "Storm":    return "#2a2e33";
+            case "Bell":     return "#FFD0E3";
+            case "The Four": return "#41A2F5";
+            case "Storm":    return "#090913";
             case "Orange":   return "#3b2000";
-            case "Math":
-            case "Compute":
-            case "Geo":
-            case "Science":
-            case "Lit":      return "white";
             default:         return "#1a1a1a";
         }
     }
@@ -443,21 +438,16 @@ public class RahkEmStartScreen extends Application {
             case "WSA":      return "#0a1a5c";
             case "Dark":     return "#2f2f2f";
             case "Light":    return "#d3d6da";
-            case "Blue":     return "#4d79ff";
+            case "Blue":     return "#64C4FF";
             case "Ocean":    return "#006994";
             case "Raven":    return "#3b3b58";
-            case "Coach":    return "#8B0000";
+            case "Coach":    return "#90D5FF";
             case "Willow":   return "#4f7942";
             case "Fuschia":  return "#c154c1";
-            case "Bell":     return "#d4af37";
+            case "Bell":     return "#FFA6C9";
             case "The Four": return "#6a5acd";
-            case "Storm":    return "#708090";
+            case "Storm":    return "#1E1E44";
             case "Orange":   return "#ff8c00";
-            case "Math":     return "#1a237e";
-            case "Compute":  return "#0d1b6e";
-            case "Geo":      return "#1a3a6e";
-            case "Science":  return "#0d2b5e";
-            case "Lit":      return "#1a1f6e";
             default:         return "#2f2f2f";
         }
     }
@@ -474,7 +464,7 @@ public class RahkEmStartScreen extends Application {
         switch (theme) {
             case "WSA":     return "#0a1a5c";
             case "Light":   return "#222222";
-            case "Bell":    return "#d4af37";
+            case "Bell":    return "black";
             case "Math":    return "#1a237e";
             case "Compute": return "#0d1b6e";
             case "Geo":     return "#1a3a6e";
@@ -491,18 +481,13 @@ public class RahkEmStartScreen extends Application {
             case "Blue":     return "#4d79ff";
             case "Ocean":    return "#006994";
             case "Raven":    return "#3b3b58";
-            case "Coach":    return "#8B0000";
+            case "Coach":    return "#90D5FF";
             case "Willow":   return "#4f7942";
             case "Fuschia":  return "#c154c1";
-            case "Bell":     return "#d4af37";
+            case "Bell":     return "#FFA6C9";
             case "The Four": return "#6a5acd";
-            case "Storm":    return "#708090";
+            case "Storm":    return "#1E1E44";
             case "Orange":   return "#ff8c00";
-            case "Math":     return "#1a237e";
-            case "Compute":  return "#0d1b6e";
-            case "Geo":      return "#1a3a6e";
-            case "Science":  return "#0d2b5e";
-            case "Lit":      return "#1a1f6e";
             default:         return "#2f2f2f";
         }
     }

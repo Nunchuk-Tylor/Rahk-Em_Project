@@ -29,12 +29,10 @@ import java.util.HashSet;
 import java.util.Random;
 
 /**
- * RahkEmController is the "brain" of the Wordle game screen.
  *
  * In JavaFX (the UI framework being used), you always have two files working together:
  *   1. An .fxml file  — describes WHAT the screen LOOKS like (buttons, labels, layout)
  *   2. A Controller   — describes WHAT HAPPENS when the user interacts with those elements
- *
  * This class is that controller. It handles everything: typing letters, checking guesses,
  * animating tiles, switching themes, and showing win/lose popups.
  */
@@ -313,20 +311,20 @@ public class RahkEmController {
         // A switch statement checks the value of currentTheme and returns the matching color.
         // "default" is the fallback if none of the cases match.
         switch (currentTheme) {
-            case "WSA":      return "#0a1a5c"; // navy blue
-            case "Dark":     return "#2f2f2f"; // dark gray
-            case "Light":    return "#d3d6da"; // light gray
-            case "Blue":     return "#4d79ff"; // bright blue
-            case "Ocean":    return "#006994"; // ocean teal
-            case "Raven":    return "#3b3b58"; // dark purple-gray
-            case "Coach":    return "#8B0000"; // dark red
-            case "Willow":   return "#4f7942"; // forest green
-            case "Fuschia":  return "#c154c1"; // bright pink-purple
-            case "Bell":     return "#d4af37"; // gold
-            case "The Four": return "#6a5acd"; // slate blue
-            case "Storm":    return "#708090"; // slate gray
-            case "Orange":   return "#ff8c00"; // dark orange
-            default:         return "#2f2f2f"; // fall back to dark gray
+            case "WSA":      return "#0a1a5c";
+            case "Dark":     return "#2f2f2f";
+            case "Light":    return "#d3d6da";
+            case "Blue":     return "#4d79ff";
+            case "Ocean":    return "#006994";
+            case "Raven":    return "#3b3b58";
+            case "Coach":    return "getThemeTileColor";
+            case "Willow":   return "#4f7942";
+            case "Fuschia":  return "#c154c1";
+            case "Bell":     return "getThemeTileColor";
+            case "The Four": return "getThemeTileColor";
+            case "Storm":    return "#090913";
+            case "Orange":   return "#ff8c00";
+            default:         return "#2f2f2f";
         }
     }
 
