@@ -321,6 +321,7 @@ public class RahkEmController {
             case "Willow":   return "#4f7942";
             case "Fuschia":  return "#c154c1";
             case "Bell":     return "getThemeTileColor";
+            case "DMac":     return "getThemeTileColor";
             case "The Four": return "getThemeTileColor";
             case "Storm":    return "#090913";
             case "Orange":   return "#ff8c00";

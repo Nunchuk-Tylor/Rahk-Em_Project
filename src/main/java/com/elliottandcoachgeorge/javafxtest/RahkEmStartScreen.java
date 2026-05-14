@@ -423,6 +423,7 @@ public class RahkEmStartScreen extends Application {
             case "Ocean":    return "#003d56";
             case "Raven":    return "#1e1e30";
             case "Coach":    return "#90D5FF";
+            case "DMac":     return "#850101";
             case "Willow":   return "#1e3318";
             case "Fuschia":  return "#3b0a3b";
             case "Bell":     return "#FFD0E3";
@@ -442,6 +443,7 @@ public class RahkEmStartScreen extends Application {
             case "Ocean":    return "#006994";
             case "Raven":    return "#3b3b58";
             case "Coach":    return "#90D5FF";
+            case "DMac":     return "#B31942";
             case "Willow":   return "#4f7942";
             case "Fuschia":  return "#c154c1";
             case "Bell":     return "#FFA6C9";
@@ -465,6 +467,7 @@ public class RahkEmStartScreen extends Application {
             case "WSA":     return "#0a1a5c";
             case "Light":   return "#222222";
             case "Bell":    return "black";
+            case "DMac":    return "#FFFFFF";
             case "Math":    return "#1a237e";
             case "Compute": return "#0d1b6e";
             case "Geo":     return "#1a3a6e";
@@ -482,6 +485,7 @@ public class RahkEmStartScreen extends Application {
             case "Ocean":    return "#006994";
             case "Raven":    return "#3b3b58";
             case "Coach":    return "#90D5FF";
+            case "DMac":     return "#0A3161";
             case "Willow":   return "#4f7942";
             case "Fuschia":  return "#c154c1";
             case "Bell":     return "#FFA6C9";
@@ -668,6 +672,7 @@ public class RahkEmStartScreen extends Application {
             case "Willow":   return "/styles/willow.css";
             case "Fuschia":  return "/styles/fuschia.css";
             case "Bell":     return "/styles/Bell.css";
+            case "DMac":     return "/styles/DMac.css";
             case "The Four": return "/styles/Four.css";
             case "Storm":    return "/styles/Storm.css";
             case "Orange":   return "/styles/Orange.css";
